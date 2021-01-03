@@ -16,10 +16,10 @@ git clone https://www.github.com/wovo/godafoss
 
 # install the AVR8 compiler
 git clone https://www.github.com/wovo/ubuntu-toolchain-avr8
-File = `(cd ubuntu-toolchain-avr8 && ls *.tgz)`
-tar -xf ubuntu-toolchain-avr8/$File
-sudo python add_path ~/$File/bin
-export PATH=~/$File/bin:$PATH
+FILE = `(cd ubuntu-toolchain-avr8 && ls *.tgz)`
+tar -xf ubuntu-toolchain-avr8/$FILE
+sudo python add_path ~/$FILE/bin
+export PATH=~/$FILE/bin:$PATH
 
 # install the ARM/Cortex compiler
 
