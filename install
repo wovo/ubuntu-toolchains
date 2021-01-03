@@ -1,0 +1,37 @@
+# bash script for installing the github.com/wovo
+# C++ embedded development environment on ubuntu
+
+# install what is available from the repositories
+sudo apt install -y gcc-10 g++10 avrdude git-lfs python-dev
+git lfs install
+
+# needed for building the arm gcc
+# sudo apt install -y curl m4 python-dev build-essential textool texlife
+
+# install the stuff from my repository
+git clone https://www.github.com/wovo/bmptk
+git clone https://www.github.com/wovo/hwlib
+git clone https://www.github.com/wovo/hwlib-examples
+git clone https://www.github.com/wovo/godafoss
+
+# install the AVR8 compiler
+git clone https://www.github.com/wovo/ubuntu-toolchain-avr8
+tar -xf ubuntu-toolchain-avr8/avr*.tar.gz
+sudo python add_path ~/avr*/bin
+
+# install the ARM/Cortex compiler
+
+# build the lpc21_isp tool
+# and set root permission for TTY access
+cd bmptk/tools/lpc21isp_197
+make
+sudo chown root lpc21isp_hr_linux.exe
+sudo chmod +s lpc21isp_hr_linux.exe
+sudo chmod + s `which avrdude`
+cd ../../..
+
+# cleanup
+rm -rf ubuntu-toolchain-avr8
+
+
+

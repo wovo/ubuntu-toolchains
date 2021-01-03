@@ -1,0 +1,8 @@
+# adds to the path in /etc/environment
+
+env = /etc/environment
+line = open( env ).readlines()[ 0 ]
+for x in sys.argv[ 1 : ]:
+   if line.find( x ) < 0:
+      line = line.replace( '"', '"' + x + ":" )
+open( env, "w" ).write( line )
