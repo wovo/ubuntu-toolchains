@@ -2,7 +2,7 @@
 # C++ embedded development environment on ubuntu
 
 # install what is available from the repositories
-sudo apt install -y gcc-10 g++10 avrdude git-lfs python-dev
+sudo apt install -y gcc-10 avrdude git-lfs python-dev libsfml-dev
 git lfs install
 
 # needed for building the arm gcc
