@@ -13,7 +13,7 @@ git clone https://www.github.com/wovo/godafoss
 # install the AVR8 compiler
 SOURCE=https://github.com/CrustyAuklet/avr-libstdcxx/releases/download/v10.2.0/avr-gcc-10.2.0-P0829-x86_64-linux.tar.gz 
 DIR=avr-gcc-10.2.0-P0289 
-wget $SOURCE -O ubuntu-toolchain/avr8-gcc.tgz
+wget $SOURCE -O ubuntu-toolchains/avr8-gcc.tgz
 tar -xf ubuntu-toolchain/avr8-gcc.tgz
 mv $DIR avr-gcc
 sudo python ubuntu-toolchains/add_path.py ~/avr-gcc/bin
@@ -22,7 +22,7 @@ export PATH=~/$avr-gcc/bin:$PATH
 # install the ARM/Cortex compiler
 SOURCE=https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/releases/download/v10.2.1-1.1/xpack-arm-none-eabi-gcc-10.2.1-1.1-linux-x64.tar.gz
 DIR=xpack-arm-none-eabi-gcc-10.2.1-1.1
-wget $SOURCE -O ubuntu-toolchain/arm-gcc.tgz
+wget $SOURCE -O ubuntu-toolchains/arm-gcc.tgz
 tar -xf ubuntu-toolchain/arm-gcc.tgz
 mv $DIR arm-gcc
 sudo python ubuntu-toolchains/add_path.py ~/arm-gcc/bin
