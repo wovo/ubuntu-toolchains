@@ -12,7 +12,7 @@ git clone https://www.github.com/wovo/godafoss
 
 # install the AVR8 compiler
 SOURCE=https://github.com/CrustyAuklet/avr-libstdcxx/releases/download/v10.2.0/avr-gcc-10.2.0-P0829-x86_64-linux.tar.gz 
-DIR=avr-gcc-10.2.0-P0289 
+DIR=avr-gcc-10.2.0-P0829 
 wget $SOURCE -O ubuntu-toolchains/avr8-gcc.tgz
 tar -xf ubuntu-toolchains/avr8-gcc.tgz
 mv $DIR avr-gcc
