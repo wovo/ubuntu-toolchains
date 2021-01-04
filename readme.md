@@ -11,8 +11,8 @@ Supported targets:
 - native (Ubuntu x86_64)
 
 These are the GCC/G++ compilers used:
-- AVR8 from https://github.com/CrustyAuklet/avr-libstdcxx/releases/tag/v10.2.0
-- ARM/Cortex build by the script from https://freddiechopin.info/en/download/category/11-bleeding-edge-toolchain
+- AVR8 : https://github.com/CrustyAuklet/avr-libstdcxx/releases
+- ARM/Cortex : https://github.com/xpack-dev-tools
 - native gcc-10 from the Ubuntu repos
 
 I could add other targets (like MSP430, ESP32, RISC V)
@@ -35,7 +35,6 @@ Log in, open a shell, and run these commands:
     sudo apt install -y git
     git clone https://www.github.com/wovo/ubuntu-toolchains
     source ubuntu-toolchains/install
-This might take some time.
 The appropriate path additions are made to /etc/environment
 and to the current shell, but not to other shells
 you create in this session. 
