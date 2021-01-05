@@ -44,8 +44,9 @@ Log out and log in is recommended.
     
 ## run a blinky from the shell
 
+You can build and run an example from its directory in a shell.
 Connect your Arduino Uno or Arduino Due.
-In the shell, cd to ~/hwlib-examples/arduin-uno/blink-gpio 
+In the shell, cd to ~/hwlib-examples/arduin-uno/blink-gpio
 or ~/hwlib-examples/arduin-due/blink-gpio.
 Run the command
 ````shell
@@ -57,20 +58,20 @@ You should see the LED on your Arduino blink.
 
 ## use with CodeLite
 
+You can build and run an example from the CodeLite editor.
 In the shell, cd to the examples root for your Arduino
-(~/hwlib-examples/arduin-uno or ~/hwlib-examples/arduin-due).
+(~/hwlib-examples/arduin-uno or ~/hwlib-examples/arduino-due).
 Run the command
 ````shell
     make codelite_workspace
 ````    
-This creates an __codelite.workspace file.
+This creates a __codelite.workspace file.
 Open this file with CodeLite.
 Accept the defaults.
 In the left pane, you see the examples as individual projects.
 Double-click on a project to select it.
 Click Build => Run to run the project.
-When asked, select 'Execute', not 'Build and Execute', and 'Remember my answer'.
+When asked, select 'Execute', not 'Build and Execute', 
+and select 'Remember my answer'.
 When asked to select a compiler, just select one, it doesn't matter which,
 because the makefile (not CodeLite) will determine which toolchain is used.
-
-
