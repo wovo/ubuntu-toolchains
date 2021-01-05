@@ -2,13 +2,11 @@
 
 Follow these instructions to turn an x86_64 PC 
 into an Ubuntu workstation for embedded C++ 20 programming,
-using my bmptk (build scripts) and hwlib (hardware library)
-(and, if you dare and it works, my godafoss template-based
-hardware library).
-Supported targets: 
+using my bmptk (build scripts) and hwlib (hardware library).
+Currently supported targets: 
 - AVR8 (Arduino Uno)
-- ARM/Cortex (Arduino Due)
-- native (Ubuntu x86_64)
+- ARM/Cortex (Arduino Due, Blue Pill, Teensy 4.0, LPC1114)
+- native (Ubuntu x86_64, Windows; both use SFML)
 
 These are the GCC/G++ compilers used:
 - AVR8 : https://github.com/CrustyAuklet/avr-libstdcxx/releases
@@ -75,3 +73,4 @@ When asked, select 'Execute', not 'Build and Execute',
 and select 'Remember my answer'.
 When asked to select a compiler, just select one, it doesn't matter which,
 because the makefile (not CodeLite) will determine which toolchain is used.
+
