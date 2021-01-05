@@ -2,7 +2,7 @@
 # C++ embedded development environment on ubuntu
 
 # install what is available from the repositories
-sudo apt install -y gcc-10 avrdude python-dev libsfml-dev
+sudo apt install -y gcc-10 avrdude python-dev libsfml-dev codelite
 
 # install the stuff from my repository
 git clone https://www.github.com/wovo/bmptk

@@ -32,9 +32,11 @@ and followed the instructions, using the default options.
 ## Download an run the installation script
 
 Log in, open a shell, and run these commands:
+````shell
     sudo apt install -y git
     git clone https://www.github.com/wovo/ubuntu-toolchains
     source ubuntu-toolchains/install
+````    
 The appropriate path additions are made to /etc/environment
 and to the current shell, but not to other shells
 you create in this session. 
@@ -46,7 +48,9 @@ Connect your Arduino Uno or Arduino Due.
 In the shell, cd to ~/hwlib-examples/arduin-uno/blink-gpio 
 or ~/hwlib-examples/arduin-due/blink-gpio.
 Run the command
+````shell
     make run
+````
 to build the example, download it to your 
 target and run it there.
 You should see the LED on your Arduino blink.
@@ -56,8 +60,17 @@ You should see the LED on your Arduino blink.
 In the shell, cd to the examples root for your Arduino
 (~/hwlib-examples/arduin-uno or ~/hwlib-examples/arduin-due).
 Run the command
-    make -f Makefile.link codelite_workspace
+````shell
+    make codelite_workspace
+````    
 This creates an __codelite.workspace file.
-Open this file with CodeLite and you
-will see the examples as individual projects.
+Open this file with CodeLite.
+Accept the defaults.
+In the left pane, you see the examples as individual projects.
+Double-click on a project to select it.
+Click Build => Run to run the project.
+When asked, select 'Execute', not 'Build and Execute', and 'Remember my answer'.
+When asked to select a compiler, just select one, it doesn't matter which,
+because the makefile (not CodeLite) will determine which toolchain is used.
+
 
