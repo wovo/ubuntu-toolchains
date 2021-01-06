@@ -1,3 +1,5 @@
+![](images/header.gif)
+
 # Ubuntu embedded C++20 setup
 
 Follow these instructions to turn an x86_64 PC 
@@ -35,10 +37,8 @@ Log in, open a shell, and run these commands:
     git clone https://www.github.com/wovo/ubuntu-toolchains
     source ubuntu-toolchains/install
 ````    
-The appropriate path additions are made to /etc/environment
-and to the current shell, but not to other shells
-you create in this session. 
-Log out and log in is recommended.
+The appropriate path additions are made to /etc/environment.
+Log out and log back in.
     
 ## run a blinky from the shell
 
@@ -69,8 +69,7 @@ Accept the defaults.
 In the left pane, you see the examples as individual projects.
 Double-click on a project to select it.
 Click Build => Run to run the project.
-When asked, select 'Execute', not 'Build and Execute', 
-and select 'Remember my answer'.
+When asked, select 'Build and Execute', and select 'Remember my answer'.
 When asked to select a compiler, just select one, it doesn't matter which,
 because the makefile (not CodeLite) will determine which toolchain is used.
 
