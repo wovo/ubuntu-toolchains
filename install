@@ -2,7 +2,7 @@
 # C++ embedded development environment on ubuntu
 
 # install what is available from the repositories
-sudo apt install -y make gcc-10 avrdude python-dev libsfml-dev codelite
+sudo apt install -y git make gcc-10 avrdude python-dev libsfml-dev codelite
 
 # install the stuff from my repository
 git clone https://www.github.com/wovo/bmptk
@@ -15,18 +15,16 @@ SOURCE=https://github.com/CrustyAuklet/avr-libstdcxx/releases/download/v10.2.0/a
 DIR=avr-gcc-10.2.0-P0829 
 wget $SOURCE -O ubuntu-toolchains/avr8-gcc.tgz
 tar -xf ubuntu-toolchains/avr8-gcc.tgz
-mv $DIR avr-gcc
-sudo python ubuntu-toolchains/add_path.py ~/avr-gcc/bin
-export PATH=~/$avr-gcc/bin:$PATH
+mv $DIR $PWD/avr-gcc
+sudo python ubuntu-toolchains/add_path.py $PWD/avr-gcc/bin
 
 # install the ARM/Cortex compiler
 SOURCE=https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/releases/download/v10.2.1-1.1/xpack-arm-none-eabi-gcc-10.2.1-1.1-linux-x64.tar.gz
 DIR=xpack-arm-none-eabi-gcc-10.2.1-1.1
 wget $SOURCE -O ubuntu-toolchains/arm-gcc.tgz
 tar -xf ubuntu-toolchains/arm-gcc.tgz
-mv $DIR arm-gcc
-sudo python ubuntu-toolchains/add_path.py ~/arm-gcc/bin
-export PATH=~/$arm-gcc/bin:$PATH
+mv $DIR $PWD/arm-gcc
+sudo python ubuntu-toolchains/add_path.py $PWD/arm-gcc/bin
 
 # build the lpc21_isp tool
 # and set root permission for TTY access
