@@ -2,46 +2,39 @@
 # C++ embedded development environment on ubuntu
 
 # install what is available from the repositories
-sudo apt install -y git make gcc-10 avrdude python-dev libsfml-dev codelite usb-dev libusb-1.0.0-dev
+sudo apt install -y git make gcc-10 avrdude python-dev libsfml-dev codelite libusb-dev stlink-tools
 
 # install the stuff from my repository
 git clone https://www.github.com/wovo/bmptk
 git clone https://www.github.com/wovo/hwlib
 git clone https://www.github.com/wovo/hwlib-examples
 git clone https://www.github.com/wovo/godafoss
+mkdir tools
 
 # install the AVR8 compiler
 SOURCE=https://github.com/CrustyAuklet/avr-libstdcxx/releases/download/v10.2.0/avr-gcc-10.2.0-P0829-x86_64-linux.tar.gz 
 DIR=avr-gcc-10.2.0-P0829 
-wget $SOURCE -O ubuntu-toolchains/avr8-gcc.tgz
-tar -xf ubuntu-toolchains/avr8-gcc.tgz
-mv $DIR $PWD/avr-gcc
-sudo python ubuntu-toolchains/add_path.py $PWD/avr-gcc/bin
+wget $SOURCE -O tools/avr8-gcc.tgz
+tar -xf tools/avr8-gcc.tgz
+mv $DIR tools/avr-gcc
+sudo python ubuntu-toolchains/add_path.py $PWD/tools/avr-gcc/bin
 
 # install the ARM/Cortex compiler
 SOURCE=https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/releases/download/v10.2.1-1.1/xpack-arm-none-eabi-gcc-10.2.1-1.1-linux-x64.tar.gz
 DIR=xpack-arm-none-eabi-gcc-10.2.1-1.1
-wget $SOURCE -O ubuntu-toolchains/arm-gcc.tgz
-tar -xf ubuntu-toolchains/arm-gcc.tgz
-mv $DIR $PWD/arm-gcc
-sudo python ubuntu-toolchains/add_path.py $PWD/arm-gcc/bin
-
-# build and install the stm32 cli
-git clone https://github.com/texane/stlink 
-cd stlink
-make build
-sudo chown root st-flash
-sudo chmod +s st-flash
-cd ..
-sudo python ubuntu-toolchains/add_path.py $PWD/stlink
+wget $SOURCE -O tools/arm-gcc.tgz
+tar -xf tools/arm-gcc.tgz
+mv $DIR tools/arm-gcc
+sudo python ubuntu-toolchains/add_path.py $PWD/tools/arm-gcc/bin
 
 # build and install the teensy loader
+cd tools
 git clone https://github.com/PaulStoffregen/teensy_loader_cli
 cd teensy_loader_cli
 sudo chown root teensy_loader_cli
 sudo chmod +s teensy_loader_cli
-cd ..
-sudo python ubuntu-toolchains/add_path.py $PWD/teensy_loader_cli
+cd ../..
+sudo python ubuntu-toolchains/add_path.py $PWD/tools/teensy_loader_cli/teensy_loader_cli
 
 # build the lpc21_isp tool
 # and set root permission for TTY access
@@ -49,5 +42,8 @@ cd bmptk/tools/lpc21isp_197
 make
 sudo chown root lpc21isp_hr_linux.exe
 sudo chmod +s lpc21isp_hr_linux.exe
-sudo chmod +s `which avrdude`
 cd ../../..
+
+# s-bit the tools that would otherwise need sudo
+sudo chmod +s `which avrdude`
+sudo chmod +s `which st-flash`
