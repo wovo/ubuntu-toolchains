@@ -44,7 +44,7 @@ cd teensy_loader_cli
 make
 sudo chown root teensy_loader_cli
 sudo chmod +s teensy_loader_cli
-cd ../..
+cd ..
 sudo python ubuntu-toolchains/add_path.py $PWD/tools/teensy_loader_cli/teensy_loader_cli
 
 git clone git://git.code.sf.net/p/dfu-util/dfu-util
@@ -56,14 +56,14 @@ sudo make install
 cd ..
 rm -r dfu-util/
 
-# build and install risc v dfu loader
+# build and install risc-v dfu loader
 cd tools
 git clone git://git.code.sf.net/p/dfu-util/dfu-util
 cd dfu-util
 ./autogen.sh
 ./configure
 sudo make install
-sudo +s `which dfu-util`
+sudo chmod +s `which dfu-util`
 cd ..
 
 # build the lpc21_isp tool
