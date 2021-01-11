@@ -11,29 +11,32 @@ git clone https://www.github.com/wovo/bmptk
 git clone https://www.github.com/wovo/hwlib
 git clone https://www.github.com/wovo/hwlib-examples
 git clone https://www.github.com/wovo/godafoss
+
+# other stuff is built inside the tools directory
 mkdir tools
+mkdir tools/downloads
 
 # install the AVR8 compiler
 SOURCE=https://github.com/CrustyAuklet/avr-libstdcxx/releases/download/v10.2.0/avr-gcc-10.2.0-P0829-x86_64-linux.tar.gz 
 DIR=avr-gcc-10.2.0-P0829 
-wget $SOURCE -O tools/avr8-gcc.tgz
-tar -xf tools/avr8-gcc.tgz
+wget $SOURCE -O tools/downloads/avr8-gcc.tgz
+tar -xf tools/downloads/avr8-gcc.tgz
 mv $DIR tools/avr-gcc
 sudo python ubuntu-toolchains/add_path.py $PWD/tools/avr-gcc/bin
 
 # install the ARM/Cortex compiler
 SOURCE=https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/releases/download/v10.2.1-1.1/xpack-arm-none-eabi-gcc-10.2.1-1.1-linux-x64.tar.gz
 DIR=xpack-arm-none-eabi-gcc-10.2.1-1.1
-wget $SOURCE -O tools/arm-gcc.tgz
-tar -xf tools/arm-gcc.tgz
+wget $SOURCE -O tools/downloads/arm-gcc.tgz
+tar -xf tools/downloads/arm-gcc.tgz
 mv $DIR tools/arm-gcc
 sudo python ubuntu-toolchains/add_path.py $PWD/tools/arm-gcc/bin
 
 # install the RISC V compiler
 SOURCE=https://github.com/stnolting/riscv_gcc_prebuilt/raw/master/data/riscv32-unknown-elf.gcc-10.1.0.rv32e.ilp32e.newlib.tar.gz
 DIR=xpack-arm-none-eabi-gcc-10.2.1-1.1
-wget $SOURCE -O tools/riscv-gcc.tgz
-tar -xf tools/riscv-gcc.tgz
+wget $SOURCE -O tools/downloads/riscv-gcc.tgz
+tar -xf tools/downloads/riscv-gcc.tgz
 mv $DIR riscv32-unknown-elf tools/riscv-gcc
 sudo python ubuntu-toolchains/add_path.py $PWD/tools/riscv-gcc/bin
 
@@ -44,17 +47,8 @@ cd teensy_loader_cli
 make
 sudo chown root teensy_loader_cli
 sudo chmod +s teensy_loader_cli
-cd ..
 sudo python ubuntu-toolchains/add_path.py $PWD/tools/teensy_loader_cli/teensy_loader_cli
-
-git clone git://git.code.sf.net/p/dfu-util/dfu-util
-cd dfu-util
-./autogen.sh
-./configure
-make
-sudo make install
-cd ..
-rm -r dfu-util/
+cd ../..
 
 # build and install risc-v dfu loader
 cd tools
@@ -63,8 +57,7 @@ cd dfu-util
 ./autogen.sh
 ./configure
 sudo make install
-sudo chmod +s `which dfu-util`
-cd ..
+cd ../..
 
 # build the lpc21_isp tool
 # and set root permission for TTY access
@@ -77,3 +70,4 @@ cd ../../..
 # s-bit the tools that would otherwise need sudo
 sudo chmod +s `which avrdude`
 sudo chmod +s `which st-flash`
+sudo chmod +s `which dfu-util`
