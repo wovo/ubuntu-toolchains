@@ -2,7 +2,9 @@
 # C++ embedded development environment on ubuntu
 
 # install what is available from the repositories
-sudo apt install -y git make gcc-10 avrdude python-dev libsfml-dev codelite libusb-dev stlink-tools
+sudo apt install -y git make gcc-10 avrdude python-dev 
+sudo apt install -y libsfml-dev codelite libusb-1.0-0-dev stlink-tools
+sudo apt install -y autoconf build-essential pkg-config
 
 # install the stuff from my repository
 git clone https://www.github.com/wovo/bmptk
@@ -27,14 +29,42 @@ tar -xf tools/arm-gcc.tgz
 mv $DIR tools/arm-gcc
 sudo python ubuntu-toolchains/add_path.py $PWD/tools/arm-gcc/bin
 
+# install the RISC V compiler
+SOURCE=https://github.com/stnolting/riscv_gcc_prebuilt/raw/master/data/riscv32-unknown-elf.gcc-10.1.0.rv32e.ilp32e.newlib.tar.gz
+DIR=xpack-arm-none-eabi-gcc-10.2.1-1.1
+wget $SOURCE -O tools/riscv-gcc.tgz
+tar -xf tools/riscv-gcc.tgz
+mv $DIR riscv32-unknown-elf tools/riscv-gcc
+sudo python ubuntu-toolchains/add_path.py $PWD/tools/riscv-gcc/bin
+
 # build and install the teensy loader
 cd tools
 git clone https://github.com/PaulStoffregen/teensy_loader_cli
 cd teensy_loader_cli
+make
 sudo chown root teensy_loader_cli
 sudo chmod +s teensy_loader_cli
 cd ../..
 sudo python ubuntu-toolchains/add_path.py $PWD/tools/teensy_loader_cli/teensy_loader_cli
+
+git clone git://git.code.sf.net/p/dfu-util/dfu-util
+cd dfu-util
+./autogen.sh
+./configure
+make
+sudo make install
+cd ..
+rm -r dfu-util/
+
+# build and install risc v dfu loader
+cd tools
+git clone git://git.code.sf.net/p/dfu-util/dfu-util
+cd dfu-util
+./autogen.sh
+./configure
+sudo make install
+sudo +s `which dfu-util`
+cd ..
 
 # build the lpc21_isp tool
 # and set root permission for TTY access
