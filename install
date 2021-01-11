@@ -38,7 +38,7 @@ wget $SOURCE -O tools/downloads/riscv-gcc.tgz
 cd tools
 mkdir riscv-gcc
 cd riscv-gcc
-tar -xf tools/downloads/riscv-gcc.tgz
+tar -xf ../downloads/riscv-gcc.tgz
 cd ../..
 sudo python ubuntu-toolchains/add_path.py $PWD/tools/riscv-gcc/bin
 
