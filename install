@@ -34,10 +34,12 @@ sudo python ubuntu-toolchains/add_path.py $PWD/tools/arm-gcc/bin
 
 # install the RISC V compiler
 SOURCE=https://github.com/stnolting/riscv_gcc_prebuilt/raw/master/data/riscv32-unknown-elf.gcc-10.1.0.rv32e.ilp32e.newlib.tar.gz
-DIR=xpack-arm-none-eabi-gcc-10.2.1-1.1
 wget $SOURCE -O tools/downloads/riscv-gcc.tgz
+cd tools
+mkdir riscv-gcc
+cd riscv-gcc
 tar -xf tools/downloads/riscv-gcc.tgz
-mv $DIR riscv32-unknown-elf tools/riscv-gcc
+cd ../..
 sudo python ubuntu-toolchains/add_path.py $PWD/tools/riscv-gcc/bin
 
 # build and install the teensy loader
@@ -71,3 +73,4 @@ cd ../../..
 sudo chmod +s `which avrdude`
 sudo chmod +s `which st-flash`
 sudo chmod +s `which dfu-util`
+
